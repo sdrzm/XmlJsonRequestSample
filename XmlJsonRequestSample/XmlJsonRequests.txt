@@ -1,0 +1,17 @@
+<Emp>
+    <Name>Password</Name>
+</Emp>
+
+{
+    "Name":"omer"
+}
+
+<string>Password</string>
+	
+<Emp xmlns="omer.com">
+    <Name>Password</Name>
+</Emp>
+
+<string>&lt;root&gt;&lt;value&gt;Hello World&lt;/value&gt;&lt;/root&gt;</string>
+
+https://www.freeformatter.com/xml-escape.html#ad-output

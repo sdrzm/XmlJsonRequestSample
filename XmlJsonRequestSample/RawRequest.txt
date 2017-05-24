@@ -1,0 +1,28 @@
+https://forums.asp.net/t/1787686.aspx?How+to+post+a+xml+value+to+web+api+
+
+I don't think your controller method will work as you have it. To accept XML and retrieve the raw data as is you can use code like the following:
+
+[HttpPost]
+public string ReturnXmlDocument(HttpRequestMessage request)
+{
+    var doc = new XmlDocument();
+    doc.Load(request.Content.ReadAsStreamAsync().Result);
+    return doc.DocumentElement.OuterXml;
+}
+To post Xml to the controller using the System.Net.Http libraries you can use:
+
+var content = new StringContent("<root><value>Hello World</value></root>",
+                                Encoding.UTF8,"text/xml");                        
+var client = new HttpClient();
+
+var result = client.PostAsync("http://localhost/AspNetWebApi/albums/rpc/ReturnXmlDocument",
+                              content)
+                   .Result;
+Or if you want to serialize something from an object directly:
+
+var client = new HttpClient();
+var album = new Album() { AlbumName = "PowerAge", Artist = "AC/DC" };
+var result = client.PostAsync<Album>("http://localhost/AspNetWebApi/albums/rpc/ReturnXmlDocument",
+                                        album, new XmlMediaTypeFormatter())
+                    .Result;
+Hope this helps,
