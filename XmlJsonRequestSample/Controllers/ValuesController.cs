@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
+using System.Xml;
+using WebApplication1.Models;
 
 namespace XmlJsonRequestSample.Controllers
 {
@@ -22,8 +25,25 @@ namespace XmlJsonRequestSample.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public string ObjEmp(Emp value)
         {
+            return "omer" + value;
+        }
+
+        [HttpPost]
+        public string StrEmp([FromBody]string value)
+        {
+            var content = new StringContent("<root><value>Hello World</value></root>", Encoding.UTF8, "text/xml");
+            return "omer" + value;
+        }
+
+        [HttpPost]
+        public string ReturnXmlDocument()
+        {
+            var doc = new XmlDocument();
+            doc.Load(Request.Content.ReadAsStreamAsync().Result);
+            return doc.DocumentElement.OuterXml;
         }
 
         // PUT api/values/5
