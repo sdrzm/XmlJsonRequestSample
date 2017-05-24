@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Xml;
-using WebApplication1.Models;
+using XmlJsonRequestSample.Models;
 
 namespace XmlJsonRequestSample.Controllers
 {
@@ -32,10 +27,10 @@ namespace XmlJsonRequestSample.Controllers
         }
 
         [HttpPost]
-        public string StrEmp([FromBody]string value)
+        public Response StrEmp([FromBody]string value)
         {
-            var content = new StringContent("<root><value>Hello World</value></root>", Encoding.UTF8, "text/xml");
-            return "omer" + value;
+            var omer = value;
+            return new Response { Result = 5 };
         }
 
         [HttpPost]

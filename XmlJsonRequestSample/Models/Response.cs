@@ -3,9 +3,9 @@
 namespace XmlJsonRequestSample.Models
 {
     [DataContract(Namespace = "omer.com")]
-    public class Emp
+    public class Response
     {
         [DataMember]
-        public string Name { get; set; }
+        public int Result { get; set; }
     }
 }
