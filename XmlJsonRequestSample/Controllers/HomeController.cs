@@ -14,5 +14,13 @@ namespace XmlJsonRequestSample.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index(string country, string name)
+        {
+            ViewBag.Title = "Home Page";
+
+            return View();
+        }
     }
 }
