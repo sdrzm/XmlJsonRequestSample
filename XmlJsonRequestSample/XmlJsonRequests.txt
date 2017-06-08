@@ -6,6 +6,7 @@
     "Name":"omer"
 }
 
+http://localhost:57577/api//Values/StrEmp
 <string>Password</string>
 	
 <Emp xmlns="omer.com">
@@ -19,3 +20,4 @@ https://www.freeformatter.com/xml-escape.html#ad-output
 Accept: application/json
 Content-Type: text/xml
 Content-Type:application/json
+
